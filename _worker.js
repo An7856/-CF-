@@ -3167,7 +3167,7 @@ async function getAdminPage(request, env) {
                         id="cfip" 
                         name="cfip" 
                         class="form-textarea" 
-                        placeholder="请输入优选IP或域名，每行一个&#10;支持格式：&#10;172.64.144.13 :8443#日本|JP;&#10;example.com:8443#日本|JP"
+                        placeholder="请输入优选IP或域名，每行一个&#10;支持格式：&#10;172.64.144.13:8443#日本|JP或&#10;example.com:8443#日本|JP"
                     >${cfip.join('\n')}</textarea>
                     <div class="form-help">这些IP/域名将用于Web界面伪装和订阅生成。支持自定义端口和国家信息，格式：IP:端口#国家名称|国家代码</div>
                 </div>
@@ -3181,7 +3181,7 @@ async function getAdminPage(request, env) {
                         id="fdip" 
                         name="fdip" 
                         class="form-textarea" 
-                        placeholder="请输入反代IP或域名，每行一个&#10;例如：&#10;13.230.34.30:8443&#10;example.com:8443"
+                        placeholder="请输入反代IP或域名，每行一个&#10;例如：&#10;13.230.34.30:8443&#10;或example.com:8443"
                     >${serverPool.join('\n')}</textarea>
                     <div class="form-help">这些IP/域名将用于实际代理连接，支持格式：IP、域名、IP:端口、域名:端口</div>
                 </div>
