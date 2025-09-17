@@ -6,7 +6,7 @@ let yourUUID = '';
 
 let cfip = [
     'ip.sb', 'time.is', 'skk.moe', 'www.visa.com.tw', 'www.visa.com.hk', 'www.visa.com.sg',
-    'cf.090227.xyz','cf.877774.xyz', 'cdns.doon.eu.org', 'cf.zhetengsha.eu.org'
+    'cdns.doon.eu.org', 'cf.zhetengsha.eu.org'
 ];
 
 let dnsResolver = 'https://sky.rethinkdns.com/1:-Pf_____9_8A_AMAIgE8kMABVDDmKOHTAKg=';
@@ -925,12 +925,10 @@ async function getHomePage(request, env) {
     const storedPassword = await getPasswordFromKV(env);
     const storedUUID = await getUUIDFromKV(env);
     
-    // 如果没有设置密码，跳转到设置密码页面
     if (!storedPassword) {
         return getSetPasswordPage(url, baseUrl, false);
     }
     
-    // 如果没有设置UUID，跳转到设置UUID页面
     if (!storedUUID) {
         return getSetUUIDPage(url, baseUrl, storedPassword, false);
     }
@@ -1649,7 +1647,6 @@ function getSetUUIDPage(url, baseUrl, password, showError = false) {
             document.getElementById('uuid').value = uuid;
         }
         
-        // 页面加载时自动生成一个UUID
         window.onload = function() {
             generateUUID();
         };
@@ -1720,7 +1717,6 @@ async function handleSetUUID(request, env) {
     const formData = await request.formData();
     const newUUID = formData.get('uuid');
     
-    // 验证UUID格式
     const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[4][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
     if (!uuidRegex.test(newUUID)) {
         return getSetUUIDPage(url, baseUrl, providedPassword, true);
@@ -2021,18 +2017,15 @@ async function handleChangePassword(request, env) {
         const newPassword = formData.get('new_password');
         const confirmPassword = formData.get('confirm_password');
         
-        // 验证密码是否匹配
         if (newPassword !== confirmPassword) {
             return getChangePasswordPage(url, baseUrl, true, '新密码和确认密码不匹配');
         }
         
-        // 验证当前密码是否正确
         const storedPassword = await getPasswordFromKV(env);
         if (currentPassword !== storedPassword) {
             return getChangePasswordPage(url, baseUrl, true, '当前密码不正确');
         }
         
-        // 更新密码
         const success = await setPasswordToKV(env, newPassword);
         
         if (success) {
@@ -2791,7 +2784,6 @@ async function handleAdminSave(request, env) {
         const fdipList = formData.get('fdip') || '';
         const uuid = formData.get('uuid') || null;
         
-        // 验证UUID格式
         if (uuid) {
             const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[4][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
             if (!uuidRegex.test(uuid)) {
