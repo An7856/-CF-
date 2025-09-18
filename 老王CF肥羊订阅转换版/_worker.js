@@ -6,7 +6,7 @@ let yourUUID = '';
 
 let cfip = [
     'ip.sb', 'time.is', 'skk.moe', 'www.visa.com.tw', 'www.visa.com.hk', 'www.visa.com.sg',
-    'cdns.doon.eu.org', 'cf.zhetengsha.eu.org'
+    ''cdns.doon.eu.org', 'cf.zhetengsha.eu.org'
 ];
 
 let dnsResolver = 'https://sky.rethinkdns.com/1:-Pf_____9_8A_AMAIgE8kMABVDDmKOHTAKg=';
@@ -2609,14 +2609,14 @@ function getMainPageContent(url, baseUrl, currentPassword, currentUUID) {
                     
                     <div class="info-item">
                         <span class="label"><i class="fab fa-react"></i>Clash订阅</span>
-                        <span class="value">https://sublink.eooce.com/clash?config=${baseUrl}/${currentUUID || 'link'}</span>
-                        <button class="copy-btn" onclick="copyToClipboard('https://sublink.eooce.com/clash?config=${baseUrl}/${currentUUID || 'link'}', 'Clash订阅链接')">复制</button>
+                        <span class="value">https://url.v1.mk/sub?target=clash&url=${baseUrl}/${currentUUID || 'link'}</span>
+                        <button class="copy-btn" onclick="copyToClipboard('https://url.v1.mk/sub?target=clash&url=${baseUrl}/${currentUUID || 'link'}', 'Clash订阅链接')">复制</button>
                     </div>
                     
                     <div class="info-item">
                         <span class="label"><i class="fas fa-box"></i>Singbox订阅</span>
-                        <span class="value">https://sublink.eooce.com/singbox?config=${baseUrl}/${currentUUID || 'link'}</span>
-                        <button class="copy-btn" onclick="copyToClipboard('https://sublink.eooce.com/singbox?config=${baseUrl}/${currentUUID || 'link'}', 'Singbox订阅链接')">复制</button>
+                        <span class="value">https://url.v1.mk/sub?target=singbox&url=${baseUrl}/${currentUUID || 'link'}</span>
+                        <button class="copy-btn" onclick="copyToClipboard('https://url.v1.mk/sub?target=singbox&url=${baseUrl}/${currentUUID || 'link'}', 'Singbox订阅链接')">复制</button>
                     </div>
                 </div>
             </div>
@@ -2717,12 +2717,12 @@ function getMainPageContent(url, baseUrl, currentPassword, currentUUID) {
         }
         
         function copyClashSubscription() {
-            const clashUrl = 'https://sublink.eooce.com/clash?config=${baseUrl}/${currentUUID || 'link'}';
+            const clashUrl = 'https://url.v1.mk/sub?target=clash&url=${baseUrl}/${currentUUID || 'link'}';
             copyToClipboard(clashUrl, 'Clash订阅链接');
         }
         
         function copySingboxSubscription() {
-            const singboxUrl = 'https://sublink.eooce.com/singbox?config=${baseUrl}/${currentUUID || 'link'}';
+            const singboxUrl = 'https://url.v1.mk/sub?target=singbox&url=${baseUrl}/${currentUUID || 'link'}';
             copyToClipboard(singboxUrl, 'Singbox订阅链接');
         }
         
@@ -3167,7 +3167,7 @@ async function getAdminPage(request, env) {
                         id="cfip" 
                         name="cfip" 
                         class="form-textarea" 
-                        placeholder="请输入优选IP或域名，每行一个&#10;支持格式：&#10;172.64.144.13:8443#日本|JP或&#10;example.com:8443#日本|JP"
+                        placeholder="请输入优选IP或域名，每行一个&#10;支持格式：&#10;172.64.144.13 :8443#日本|JP&#10;example.com:8443#日本|JP"
                     >${cfip.join('\n')}</textarea>
                     <div class="form-help">这些IP/域名将用于Web界面伪装和订阅生成。支持自定义端口和国家信息，格式：IP:端口#国家名称|国家代码</div>
                 </div>
@@ -3181,7 +3181,7 @@ async function getAdminPage(request, env) {
                         id="fdip" 
                         name="fdip" 
                         class="form-textarea" 
-                        placeholder="请输入反代IP或域名，每行一个&#10;例如：&#10;13.230.34.30:8443&#10;或example.com:8443"
+                        placeholder="请输入反代IP或域名，每行一个&#10;例如：&#10;13.230.34.30:8443&#10;example.com:8443"
                     >${serverPool.join('\n')}</textarea>
                     <div class="form-help">这些IP/域名将用于实际代理连接，支持格式：IP、域名、IP:端口、域名:端口</div>
                 </div>
